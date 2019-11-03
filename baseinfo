@@ -1,0 +1,23 @@
+#!/bin/bash
+# Athor Vengada Kandasamy - S3727817 - S3727817@student.rmit.edu.au
+# This script will allow the user to read some basic information about their device
+# using the following parameters the user will see specific information to that argument
+# -f will display the free memory on the system
+# -d will display the amount of space occupied and free on the system
+# -c will display the connection information of the system
+# -s will display the load average
+# -l will display all the above information
+
+
+#detect parameters
+while getopts "fdcsl" flag ; do
+	case $flag in
+		"f") free -h --si | awk '/Mem/ {printf "\nFree Memory = %s\n", $4}' ;;
+		"d")	echo " "
+			df -h --si | awk '!/tmp/ {printf $1 "\t" $2 "\t" $3 "\n"}' ;;
+		"c") ;;
+		"s") ;;
+		"l") ;;
+		*) echo invalid chocie $REPLY
+	esac
+done
