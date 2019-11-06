@@ -5,33 +5,35 @@
 
 # get the starting point
 testing="true"
+depth="0"
 echo "please enter the starting point location"
 read startingPoint
 
-
-
-searchMenuOptions=(" " "1 - path" "2 - type" "3 - group" "4 - fstype")
+searchMenuOptions=(" " "1 - path" "2 - type" "3 - group" "4 - fstype" "Hit Enter To Leave Blank")
 printf '%s\n' "${searchMenuOptions[@]}"
 echo "What Type are you searching for? 1, 2, 3, 4"
 read searchingFor
 searchingType="false"
-while [[ searchingType == "false" ]] ; do
-	if [[ searchingFor == "1" ]] ; then
+while [[ $searchingType == "false" ]] ; do
+	if [[ $searchingFor == "1" ]] ; then
 		echo "Please Enter the pattern for -path"
 		read pattern
 		searchingType="-path ${pattern}"
-	else if [[ searchingFor == "2" ]] ; then
+	elif [[ $searchingFor == "2" ]] ; then
 		echo "Please enter the type you are after"
 		read type
 		searchingType="-type ${type}"
-	else if [[ searchingFor == "3" ]] ; then
+	elif [[ $searchingFor == "3" ]] ; then
 		echo "please enter the gname"
 		read gname
 		searchingType="-group ${gname}"
-	else if [[ searchingFor == "4" ]] ; then
+	elif [[ $searchingFor == "4" ]] ; then
 		echo "Please enter the fstype"
 		read fstype
 		searchingType="-fstype ${fstype}"
+	else
+		printf '%s\n' "${searchMenuOptions[@]}"
+		read searchingFor
 	fi
 done
 
@@ -48,6 +50,11 @@ echo "Depth $depth"
 echo "Follow $follow"
 echo "Action $action"
 
+if [[ "$depth" != "0" ]] ; then
+	oldDepth="${depth}"
+	depth="-depth ${oldDepth}"
+fi
+
 if [[ "$follow" == "y" ]] || [[ "$follow" == "Y" ]] || [[ "$follow" == "yes" ]] || [[ "$follow" == "YES" ]] ; then
 	follow="-L" #enable following of symbollic links
 else
@@ -58,12 +65,14 @@ fi
 
 resultingCommand="find ${startingPoint} ${searchingType} ${depth} ${follow} ${action}"
 
-if [[ testing == "true" ]] ; then
+if [[ $testing == "true" ]] ; then
 	echo ""
-	echo "Testing is enabled, the command is below \n"
-	echo "${resultingCOmmand}"
+	echo "Testing is enabled, the command is below"
+	echo "${resultingCommand}"
 	echo "To disable this you will need to edit the script and turn testing to false or not true"
 else
-	eval resultingCommand #needs to be tested
+
+	echo "${resultingCommand}"
+	eval $resultingCommand #needs to be tested
 fi
 
