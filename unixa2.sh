@@ -3,7 +3,7 @@
 # This program is created for education purposes as part of Unix System Administration Assignment 2 for RMIT University
 # This menu program will guide the user through the a selection of various scripts that will let them gather extra infomration of the system in a more user friendly manner
 question="Select an Option"
-mainMenuOptions=(" " "1 - Basic Info" "2 - Basic Info Post Processing" "3 - Req 3" "4 - Req 4 " "q - Quit")
+mainMenuOptions=(" " "1 - Basic Info" "2 - Basic Info Post Processing" "3 - Custom Find" "4 - Basic Profiler" "q - Quit")
 printf '%s\n' "${mainMenuOptions[@]}"
 echo "Please enter your numerical choice, or q to quit: "
 read mainMenuChoice
@@ -54,10 +54,11 @@ while [[ $mainMenuChoice != "q" ]] ; do
 				read basicOptionChoice
 			done ;;
         	"3")
-	            echo "you chose $opt - Not Yet Implemented"
+			echo "Begin Custom Find Script/n"
+			./customfind.sh
 	            ;;
 		"4")
-		    echo "you chose $opt - Not Yet Implemented"
+		    echo "Begin Basic Profiler Script/n"
 		    ;;
         	"q")
 		    echo "Quitting Program, See You Later"
