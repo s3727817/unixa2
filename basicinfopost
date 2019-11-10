@@ -1,0 +1,42 @@
+.\" Manpage for basicinfopost
+
+.TH BASICINFOPOST 8 "10 November 2019" "1.0" "basicinfopost man page"
+
+.SH NAME
+basicinfopost \- Post information about the system
+
+.SH SYNOPSIS
+.B basicinfopost
+[\fB\-c\fR] [\fB\-p\fR] [\fB\-r\fR] [\fB\-o\fR] [\fB\-s\fR] [\fB\-l\fR]
+
+.SH DESCRIPTION
+.B basicinfopost
+This script allows the user to read some basic information about their system, such information includes 
+the number of CPU cores, Current Process's Priority, Processes running count, Open File Descriptors owned by the 
+current user and Maximum system stack size
+
+.SH OPTIONS
+.TP
+.BR \-c
+display the number of cpu cores on the system
+.TP
+.BR \-p
+display the process' priority
+.TP
+.BR \-r
+display the number of processess running under the current user
+.TP
+.BR \-o
+display the open file descriptors to regular files owned by the current user
+.TP
+.BR \-s
+display the maximum system stack size
+.TP
+.BR \-l
+display all the above information
+
+.SH AUTHOR
+Vengada Kandasamy <s3727817 at rmit dot edu dot au>
+
+.SH HISTORY
+Nov 2019 Orginally written by Vengada W Kandasamy
