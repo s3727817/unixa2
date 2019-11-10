@@ -1,7 +1,9 @@
 #!/bin/bash
 # Athor Vengada Kandasamy - S3727817 - S3727817@student.rmit.edu.au
-# This script will allow the user to read some basic information about their device
-# using the following parameters the user will see specific information to that argument
+# This script will allow the user to read some basic information about their device, such as
+# The amount of Free Memory, Disk Usage, Connection information and Load Averages
+
+# using the following parameters the user will see specific information to that parameter
 # -f will display the free memory on the system
 # -d will display the amount of space occupied and free on the system
 # -c will display the connection information of the system

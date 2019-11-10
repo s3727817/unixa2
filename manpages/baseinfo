@@ -1,0 +1,45 @@
+.\" Manpage for baseinfo
+
+.TH BASEINFO 8 "10 November 2019" "1.0" "baseinfo man page"
+
+.SH NAME
+baseinfo \- base information about the system being used
+
+.SH SYNOPSIS
+.B baseinfo 
+[\fB\-f\fR] [\fB\-d\fR] [\fB-c\fR] [\fB-c\fR] [\fB-s\fR] [\fB-l\fR]
+
+
+.SH DESCRIPTION
+.B basefino
+Script will allow the suer to read some base information about their device, such as the amount of
+Free Memory, Disk Usage, Connection Infromation and Load Averages
+
+.SH OPTIONS
+.TP 
+.BR \-f
+display the free memory on the system
+.TP 
+.BR -d
+display the amount of disk space occupied and free on the system
+.TP 
+.BR -c
+display the connection information of the system
+.TP 
+.BR -s
+display the system load averages 
+.TP 
+.BR -l
+display all the above information
+
+.SH BUGS
+.\"
+
+.SH AUTHOR
+Vengada Kandasamy <s3727817 at rmit dot edu dot au>
+
+.SH SEE ALSO
+.\"
+
+.SH HISTORY
+Nov 2019 Originally written by Vengada W Kandasamy
