@@ -32,14 +32,10 @@ display the system load averages
 .BR -l
 display all the above information
 
-.SH BUGS
-.\"
 
 .SH AUTHOR
 Vengada Kandasamy <s3727817 at rmit dot edu dot au>
 
-.SH SEE ALSO
-.\"
 
 .SH HISTORY
 Nov 2019 Originally written by Vengada W Kandasamy
