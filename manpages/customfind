@@ -1,0 +1,52 @@
+.\" Manpage for customfind
+
+.TH CUSTOMFIND 8 "11 November 2019" "1.0" "customfind man page"
+
+.SH NAME
+customfind \- using a menu system navigate through choices for an easy way to use the find command
+
+.SH SYNOPSIS
+.B customfind
+
+.SH DESCRIPTION
+.B customfind
+This script will guide the user through information required to perfom a find query on the sytem
+
+\fBStep 1\fR Startring point
+where the query will begin the search
+
+\fBStep 2\fR Search Type
+what type of are you looking for. Based on the choice you make, you will then be asked to enter the apropriate value for that tyep
+
+\fB \-path \fRa pattern to search for
+\fB \-type \fRfile is of type such as , b - block, c - character, d - directory
+\fB \-group \fRa name of a group to search, such as root, pi, docker
+\fB \-fstype \fRfile is on a filesystem of type such as ufs, 4.2, 4.3, nfs, mfs
+
+\fBStep 3 \fRdepth
+\fRhow deep do you want the search query to go, hitting enter at this stage is the same as entering 0
+
+\fBStep 4\fR symbolic links
+do you want to follow symbollic links? If you decide too follow symbolic links then -L will be added to the search query
+otherwise nothing extra will be added, as by default the find command does not follow symbolic links
+
+\fBStep 5 \fRaction
+what action is to be taken based on the result of the query
+examples include
+\fBdelete, print, print0, custom (enter your own)
+
+\fRresulting query is constructed as follows
+\fBfind <follow> <starting point> <searching type & value> <depth> <action>
+
+.SH EXAMPLES
+find . -gname root
+
+.SH SEE ALSO
+.BR find (1)
+
+
+.SH AUTHOR
+Vengada Kandasamy <s3727817 at student dot rmit dot edu dot au>
+
+.SH HISTORY
+Nov 2019 Originally written by Vengada Kandasamy
