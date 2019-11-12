@@ -13,15 +13,27 @@
 
 #detect parameters
 while getopts "fdcsl" flag ; do
+	#output based on parameter
 	case $flag in
-		"f") free -h --si | awk '/Mem/ {printf "\nFree Memory = %s\n", $4}' ;;
-		"d")	echo " " #could use "df /" for just root system, however not doing so will allow for other devices, such as usb to be shown as well
+		"f") 	#output the free memory information
+			free -h --si | awk '/Mem/ {printf "\nFree Memory = %s\n", $4}' ;;
+
+		"d")	#could use df / for just root system, however not doing so will allow for other devices to be show as well
+			echo " " #spacing for more readable output
 			df -h --si | awk '!/tmp/ {printf $1 "\t" $2 "\t" $3 "\t" $4 "\n"}' ;;
-		"c") 	echo " "
+
+		"c") 	#output all connection information
+			echo " " #spacing for more readable output
 			ifconfig -a ;;
-		"s") uptime | awk '/load/ {print "Load Average - 1Min: " $8 " 5Min: " $9 " 15Min: " $10 }' ;;
-		"l") 	echo " "
+
+		"s") 	#get the uptime information and display its 1, 5 and 15min times
+			uptime | awk '/load/ {print "Load Average - 1Min: " $8 " 5Min: " $9 " 15Min: " $10 }' ;;
+
+		"l") 	#recursively call this script but with all parameters to display all the info
+			echo " " #style
 			./baseinfo -f -d -c -s ;; #carefull not to call -l which will cause infinite loop
-		*) echo invalid chocie $REPLY
+
+		*) 	#If the parameter is not one of the above, inform the user
+			echo invalid chocie $REPLY
 	esac
 done

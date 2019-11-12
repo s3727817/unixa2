@@ -54,11 +54,12 @@ while [[ $mainMenuChoice != "q" ]] ; do
 				read basicOptionChoice
 			done ;;
         	"3")
-			echo "Begin Custom Find Script/n"
+			echo "Begin Custom Find Script\n"
 			./customfind.sh
 	            ;;
 		"4")
-		    echo "Begin Basic Profiler Script/n"
+			echo "Begin Profiling Script\n"
+			./profiler.sh
 		    ;;
         	"q")
 		    echo "Quitting Program, See You Later"

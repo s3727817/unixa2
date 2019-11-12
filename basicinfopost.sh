@@ -13,18 +13,27 @@
 
 #detect parameters
 while getopts "cprosl" flag ; do
+	#output info based on parameter
 	case $flag in
 		"c") 	#count the amount of times "processor" turns up in /proc/cpuinfo with grep
 			echo "CPU Count: $(grep -c processor /proc/cpuinfo)" ;;
+
 	 	"p")    echo "Current Process' Priorit is"
 			echo "$(ps -o pri -o ni -o cmd)" ;;
+
 		"r") 	#count amount of lines from ps for this user
 			echo "Process' Currently Running for $USER is $(ps -u $USER | wc -l)" ;;
+
 		"o") 	#count amount of lines from lsof $USER
 			echo "Current Open File Descriptors for $USER is $(lsof -u $USER | wc -l)" ;;
+
 		"s") 	#display the max stack size
 			echo "Stack Size is: $(ulimit -s) kb" ;;
-		"l") 	./basicinfopost.sh -c -p -r -o -s ;;
-		*) echo invalid choice #REPLY
+
+		"l") 	#recursively call this script and pass in all parameters to print all info
+			./basicinfopost.sh -c -p -r -o -s ;;
+
+		*) 	#if the parameter is not one of the above inform the user
+			echo invalid choice $REPLY
 	esac
 done
